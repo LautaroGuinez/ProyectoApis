@@ -101,6 +101,51 @@ namespace Apis.Repository
 
 
         }
+
+        public void ModificarProducto(Producto pro)
+        {
+
+            string connectionString = "Server= DESKTOP-N741CHP ; Database = SistemaGestion; Trusted_Connection = True;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                var comando = new SqlCommand("Update Producto Set Descripciones '" + pro._descripcion + "' , Costo" + pro._costo + "PrecioVenta ," + pro._precioVenta + "Stock ," + pro._stock + "IdUsuario ," + pro._idUsuario , connection);
+                comando.ExecuteNonQuery();
+                connection.Close();
+            }
+
+
+
+        }
+
+        public void BorrarProducto(Producto produ)
+        {
+            string connectionString = "Server= DESKTOP-N741CHP ; Database = SistemaGestion; Trusted_Connection = True;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                var comando = new SqlCommand("Deleted From Producto Where Id=" + produ._id + " And Descripciones='" + produ._precioVenta + "' And Costo=" + produ._costo + " And PrecioVenta=" + produ._precioVenta + " And Stock=" + produ._stock + " And IdUsuario=" + produ._idUsuario, connection);
+                comando.ExecuteNonQuery();
+                connection.Close();
+            }
+
+        }
+
+        public void CargarProducto(Producto produ)
+        {
+            string connectionString = "Server= DESKTOP-N741CHP ; Database = SistemaGestion; Trusted_Connection = True;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                var comando = new SqlCommand("Insert Into Producto Values (" + produ._id + ", '" + produ._descripcion + "' ," + produ._costo + ", " + produ._precioVenta + "," + produ._stock + ", " + produ._idUsuario + ")", connection );
+                comando.ExecuteNonQuery();
+                connection.Close();
+            }
+
+        }
     }
 
 

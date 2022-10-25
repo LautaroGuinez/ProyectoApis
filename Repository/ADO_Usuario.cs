@@ -71,7 +71,6 @@ namespace Apis.Repository
         {
 
             string connectionString = "Server= DESKTOP-N741CHP ; Database = SistemaGestion; Trusted_Connection = True;";
-            var usuario = new Usuario();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
